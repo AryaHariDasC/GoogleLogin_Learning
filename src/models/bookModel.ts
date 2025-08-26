@@ -1,15 +1,12 @@
-import mongoose from 'mongoose'
-import { Ibook } from '../interface/bookInterdace'
+import mongoose, { Schema, Document } from "mongoose";
+import { IBook } from "../interface/bookInterdace";
 
-const bookSchema = new mongoose.Schema<Ibook>(
-     {
-    title: { type: String, required: true },
-    author: { type: String, required: true },
-    category: { type: String, required: true },
-    bookId: { type: String, required: true },
-    availableCopies: { type: Number, required: true },
-    createdAt: { type: Date, required: true },
-    updatedAt: { type: Date, required: true }
-})
+export interface IBookDocument extends IBook, Document {}
 
-export const bookModel = mongoose.model<Ibook>('book', bookSchema);
+const BookSchema = new Schema<IBookDocument>({
+  title: { type: String, required: true },
+  author: { type: String, required: true },
+  price: { type: Number, required: true },
+});
+
+export const BookModel = mongoose.model<IBookDocument>("Book", BookSchema);

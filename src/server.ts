@@ -27,7 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use("/", userRouter);
+app.use("/api/payment", userRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
